@@ -1,0 +1,137 @@
+{
+  "total": 100,
+  "data": [
+    {
+      "_id": "5d99beb677015a5c2c14542e",
+      "amount": "10000",
+      "type": "outcome",
+      "name": {
+        "first": "Jordan",
+        "last": "Bauer"
+      },
+      "company": "SNORUS",
+      "email": "jordan.bauer@snorus.net",
+      "phone": "+1 (901) 404-2928",
+      "address": "712 Bills Place, Cochranville, Florida, 6951",
+      "date":"2022-05-07"
+    },
+    {
+      "_id": "5d99beb69a6aac64be820dbo",
+      "amount": "5000",
+      "type": "income",
+      "name": {
+        "first": "Francis",
+        "last": "Owens"
+      },
+      "company": "EXOPLODE",
+      "email": "francis.owens@exoplode.us",
+      "phone": "+1 (954) 566-2476",
+      "address": "457 Stockholm Street, Montura, Pennsylvania, 7855",
+      "date":"2022-05-07"
+    },
+    {
+      "_id": "5d99beb635dd82195040195b",
+      "amount": "12000",
+      "type": "outcome",
+      "name": {
+        "first": "Bass",
+        "last": "Church"
+      },
+      "company": "ACCRUEX",
+      "email": "bass.church@accruex.com",
+      "phone": "+1 (881) 403-2661",
+      "address": "786 Ira Court, Abiquiu, Kentucky, 1055",
+      "date":"2022-08-07"
+    },
+    {
+      "_id": "5d99beb6283bac04b3763000",
+      "amount": "750",
+      "type": "loan",
+      "name": {
+        "first": "Mabel",
+        "last": "Holt"
+      },
+      "company": "MALATHION",
+      "email": "mabel.holt@malathion.io",
+      "phone": "+1 (951) 520-3392",
+      "address": "890 Alice Court, Bath, New Hampshire, 6400",
+      "date":"2022-02-07"
+    },
+     {
+      "_id": "5d99beb69a6aac64be820dbp",
+      "amount": "15000",
+      "type": "income",
+      "name": {
+        "first": "Francis",
+        "last": "Owens"
+      },
+      "company": "EXOPLODE",
+      "email": "francis.owens@exoplode.us",
+      "phone": "+1 (954) 566-2476",
+      "address": "457 Stockholm Street, Montura, Pennsylvania, 7855",
+      "date":"2022-05-06"
+    },
+    {
+      "_id": "5d99beb6207f35413c9b629b",
+      "amount": "140200",
+      "type": "loan",
+      "name": {
+        "first": "Lambert",
+        "last": "Higgins"
+      },
+      "company": "GEEKOLOGY",
+      "email": "lambert.higgins@geekology.name",
+      "phone": "+1 (957) 573-3207",
+      "address": "513 Schroeders Avenue, Moquino, Connecticut, 6353",
+      "date":"2022-05-07"
+    },
+    {
+      "_id": "5d99beb6f6db754cee0835a0",
+      "amount": "8880",
+      "type": "investment",
+      "name": {
+        "first": "Jeanie",
+        "last": "Wiley"
+      },
+      "company": "CORECOM",
+      "email": "jeanie.wiley@corecom.tv",
+      "phone": "+1 (931) 432-2272",
+      "address": "196 Highland Boulevard, Wildwood, Georgia, 8732",
+      "date":"2022-01-07"
+    },
+    {
+      "_id": "5d99beb6c0c5d1e73c8bb5a2",
+      "amount": "250",
+      "type": "investment",
+      "name": {
+        "first": "Lynn",
+        "last": "Summers"
+      },
+      "company": "BLUEGRAIN",
+      "email": "lynn.summers@bluegrain.biz",
+      "phone": "+1 (877) 578-3987",
+      "address": "999 Ellery Street, Hartsville/Hartley, Tennessee, 8475",
+      "date":"2022-05-03"
+    },
+    {
+      "_id": "5d99beb69a6aac64be820dbe",
+      "amount": "51000",
+      "type": "income",
+      "name": {
+        "first": "Francis",
+        "last": "Owens"
+      },
+      "company": "EXOPLODE",
+      "email": "francis.owens@exoplode.us",
+      "phone": "+1 (954) 566-2476",
+      "address": "457 St",
+      "date":"2022-08-07"
+    }
+  ]
+}
+
+
+
+
+
+
