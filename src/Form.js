@@ -27,7 +27,7 @@ function removeDoubleName(array) {
 function removeDoubleNameSum(array) {
     for (let i=0;i<array.length-1;i++){
         if(array[i].fullname===array[i+1].fullname){
-            array[i+1].amount = parseInt(array[i+1].amount) + parseInt(array[i].amount)
+            array[i+1].amount = array[i+1].amount + array[i].amount
             array.splice(i,1,null)
         }
     }
@@ -36,14 +36,14 @@ function removeDoubleNameSum(array) {
 function removeDoubleDateSum(array) {
     for (let i=0;i<array.length-1;i++){
         if(array[i].date===array[i+1].date){
-            array[i+1].amount = parseInt(array[i].amount) + parseInt(array[i+1].amount)
+            array[i+1].amount = array[i].amount + array[i+1].amount
             array.splice(i,1,null)
         }
     }
 }
 
 function getMaxValue(array){
-    const maxVal = array.map(item=>parseFloat(item.amount)).reduce((max, prop)=>{
+    const maxVal = array.map(item=>item.amount).reduce((max, prop)=>{
     if(prop>max){return prop}
     else {return max}
     },0)
@@ -138,7 +138,7 @@ const PersonalActivity = ({type, activity, somearray,someref})=>{
                  .sort((a,b)=>(a.date>b.date)?1:(a.date<b.date)?-1:0)
                  .map((item, i)=>
                     <li key = {i}>
-                        {item.date}:{parseInt(item.amount)}
+                        {item.date}:{item.amount}
                         <textarea style ={{position:"relative", top:"10px", left:"10px"}} defaultValue = {item.question} onMouseOver= {()=>noteRef.current.className = "comments1" } onClick = {()=>noteRef.current.className = "comments"} onMouseLeave={()=>noteRef.current.className = "comments" }onBlur = {(e)=>updateContragent(e,item._id)}></textarea>
                         <span ref = {noteRef} className = "comments">Change note?</span>
                     </li>):null}
@@ -214,6 +214,7 @@ export const Contragent =({data, sumincome, sumoutcome, sumloans, suminvest})=>{
                     :null} 
                     <div> 
                         <button onClick ={showContragent}>Show</button>
+                        <h3>{selectRef.current.value}</h3>
                         <PersonalActivity type = "income" activity = {sumIncome0} somearray = {sumincome} someref = {selectRef}/>
                         <PersonalActivity type = "outcome" activity = {sumOutcome0} somearray = {sumoutcome} someref = {selectRef}/>
                         <PersonalActivity type = "loan" activity = {sumLoans0} somearray = {sumloans} someref = {selectRef}/>

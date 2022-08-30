@@ -5,8 +5,15 @@ import { useState, useRef, useEffect } from 'react';
 import {Activity, Contragent, Summary, Transaction} from './Form'
 
 const copiedData = structuredClone(dataFromFile)
-const data1 = copiedData.data.map(item=>renameProperty(item, 'name','fullname'))
-
+const data0 = copiedData.data.map(item=>renameProperty(item, 'name','fullname'))
+//_________________________________________________________________________________________________________________
+const data1 = stringToNumber(data0)
+function stringToNumber(array){
+  for (let i of array){
+    i.amount = Number(i.amount)
+  } return array
+}
+//________________________________________________________________________________________________________________
 function renameProperty(obj, oldKey,newKey){
     obj[newKey] = `${obj[oldKey].last} ${obj[oldKey].first}`
     delete obj[oldKey]
@@ -15,13 +22,13 @@ function renameProperty(obj, oldKey,newKey){
 
 function toLocale(array) {
     for(let i of array){
-      i.date = new Date(i.date).toLocaleDateString()
+       i.date = new Date(i.date).toLocaleDateString()
        i.date = i.date.split(/\./).reverse().join('-')
       console.log(i.date)}
       const sortedArray = array.sort((a,b)=>(a.date>b.date)?1:(a.date<b.date)?-1:0)
    return sortedArray
   }
-
+  let count=0; let countfile=0
   const App=() =>{
    
     const [data, setData] = useState(data1)
@@ -34,7 +41,10 @@ function toLocale(array) {
     const [rangeAmount, setRangeAmount] = useState(false)
     const [rangeDate, setRangeDate] = useState(false)
     const [serverActivated, setServerActivated] = useState(false)
-  
+    //____________________________________________________________________________________________________________________
+     //const [countFile, setCountFile] = useState()
+     //const [sourceData, setSourceData] = useState("server")
+     //______________________________________________________________________________________________________________
     const calRef = useRef()
     const selectRef1 = useRef()
 
@@ -59,7 +69,12 @@ function toLocale(array) {
       setSumLoan(sumLoan1)
       setSumInvest(sumInvest1)
     },[dateData])
-
+//_________________________________________________________________________________________________________________
+//useEffect(()=>{
+  //setData(data1)
+  //setDateData(dateData)
+//}, [countFile])
+//___________________________________________________________________________________________
     const Date=()=>{
       if(selectRef1.current&&calRef.current.value!==''){
           return(
@@ -116,12 +131,28 @@ function toLocale(array) {
       } else {
         getTimes()
       }
+      //______________________________________________________________________________________________________
+      //let count = 0;
+      count = count+1;
+      console.log(count)
+
+      //let countfile = 0;
+      
+      if(count%2) {
+        countfile+=1
+        //setCountFile(countfile)
+        //setSourceData("file")
+        console.log("oo")
+      } else { /*setSourceData("server")*/}
+    //_________________________________________________________________________________________________________
     }
 
     function getServerData(){
       if(serverActivated){
         getContragents()
-      }
+      }//_________________________________________________________________________________________________
+      else {setData(data1)}
+      //__________________________________________________________________________________________________
     }
 
     function rangeByAmount(){
@@ -134,7 +165,7 @@ function toLocale(array) {
       setRangeAmount(false)
     }
 
-    const calendarFunc =()=>{
+   /* const calendarFunc =()=>{
       let calendar;
         if(!serverActivated){
           calendar = (data.sort((a,b)=>(a.date<b.date)?1:(a.date>b.date)?-1:0).filter(item=>{
@@ -148,7 +179,31 @@ function toLocale(array) {
         } else {
           getTimes()
         }
-    } 
+    }*/
+    const calendarFunc=()=> {
+      let calendar;
+      if (calRef.current.value){
+        if(!serverActivated){
+          calendar = (data.sort((a,b)=>(a.date<b.date)?1:(a.date>b.date)?-1:0).filter(item=>{
+          return (selectRef1.current.value==="Before")?item.date<calRef.current.value:
+                (selectRef1.current.value==="Until")?item.date<=calRef.current.value:
+                (selectRef1.current.value==="For")?item.date===calRef.current.value:
+                (selectRef1.current.value==="From")?item.date>=calRef.current.value:
+                (selectRef1.current.value ==="After")?item.date>calRef.current.value:null
+          }));
+          setDateData(calendar)
+        } else {
+          getTimes()
+        }//__________________________________________________________________________________________________________
+      } else {
+        if (!serverActivated){
+          setDateData(data)
+        } else {
+        getContragents()
+        }
+      }//__________________________________________________________________________________________________________
+    }
+    
 
     return(
         <div className ="wrapper1"> 
@@ -176,7 +231,7 @@ function toLocale(array) {
               </select> 
               Range by: amount<input type = "checkbox" onChange={rangeByAmount}></input>
               date<input type = "checkbox" onChange={rangeByDate}></input>
-              Activate server<input type = 'checkbox' onChange = {startServer}></input>
+              Activate {/*sourceData*/}<input type = 'checkbox' onChange = {startServer}></input>
           </div>
           <Date cref = {calRef} sref = {selectRef1}/>
           <Routes>
